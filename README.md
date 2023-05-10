@@ -13,7 +13,7 @@ This Python script scrapes poems from https://allpoetry.com, a poetry community 
 
 - Clone or download the repository to your local machine.
 - Install the required libraries using pip: `pip install -r requirements.txt`
-- Download ChromeDriver from https://sites.google.com/a/chromium.org/chromedriver/downloads and place it in the same directory as the script.
+- Download ChromeDriver from https://chromedriver.chromium.org/downloads and place it in the same directory as the script.
 
 ## Usage
 

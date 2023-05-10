@@ -3,11 +3,12 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from bs4 import BeautifulSoup
 import time
 
 # Path to the Chrome driver executable
-driver_path = "/home/dev/chromedriver"
+driver_path = "/path/to/chromedriver"
 
 # URL of the webpage to scrape
 url = "https://allpoetry.com/#t_picks"
@@ -21,6 +22,27 @@ driver.get(url)
 
 # Wait for the page to fully load
 time.sleep(5)
+
+# Scroll down the page to load more poems
+while True:
+    # Get the current height of the page
+    last_height = driver.execute_script("return document.body.scrollHeight")
+
+    # Scroll down to the bottom of the page
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    # Wait for the page to load new poems
+    time.sleep(2)
+
+    # Calculate the new height of the page
+    new_height = driver.execute_script("return document.body.scrollHeight")
+
+    # If the height hasn't changed, we've reached the end of the page
+    if new_height == last_height:
+        break
+
+    # Otherwise, continue scrolling down the page
+    last_height = new_height
 
 # Get the page source
 content = driver.page_source

@@ -66,6 +66,3 @@ with open("poems.txt", "w") as file:
             + poem.text.strip()
             + "\n------------------------------------------------------------\n\n"
         )
-
-if __name__ == "__main__":
-    pass

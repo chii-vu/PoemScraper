@@ -11,7 +11,7 @@ import time
 driver_path = "/path/to/chromedriver"
 
 # URL of the webpage to scrape
-url = "https://allpoetry.com/#t_picks"
+url = "https://allpoetry.com"
 
 # Create a Chrome driver instance
 s = Service(driver_path)
@@ -59,10 +59,15 @@ with open("poems.txt", "w") as file:
     for poem in poems:
         title = poem.find_previous("h1", class_="title").text.strip()
         author = poem.find_previous("a", class_="u nocolor").text.strip()
+
         file.write("Title: {}\n".format(title))
         file.write("Author: {}\n".format(author))
-        file.write(
-            "\n"
-            + poem.text.strip()
+
+        # Remove leading tabs from lines after the first one
+        text = poem.text.strip().replace("\t", "")
+        text = text.split('\n')
+        text = text[0] + '\n' + '\n'.join([line.lstrip() for line in text[1:]])
+
+        file.write(text
             + "\n------------------------------------------------------------\n\n"
         )

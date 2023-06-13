@@ -24,3 +24,20 @@ python poem_scraper.py
 ```
 
 The script will launch Google Chrome and start scraping the poems displayed on https://allpoetry.com. After the scraping is complete, the script will write the scraped data to a file named "poems.txt" in the same directory.
+
+## Async version
+Run the WebDriver as a service using the downloaded chromedriver file
+```
+# Linux command
+./chromedriver --port=9999
+
+# Windows command
+.\chromedriver --port=9999
+``` 
+Run the script
+
+```
+python poem_scraper_async.py
+```
+This version tends to be a little faster than the asynchronous one.
+More information in [Caqui page](https://pypi.org/project/caqui/#description)

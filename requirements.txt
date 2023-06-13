@@ -23,3 +23,4 @@ ujson
 urllib3
 wsproto
 zstandard
+caqui

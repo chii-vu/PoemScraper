@@ -16,6 +16,8 @@ driver_path = "./chromedriver"
 url = "https://allpoetry.com"
 
 while True:
+    start = time.time()
+
     # Create a Chrome driver instance
     s = Service(driver_path)
     driver = webdriver.Chrome(service=s)
@@ -84,6 +86,9 @@ while True:
 
     # Close the browser
     driver.quit()
+
+    end = time.time()
+    print(f"Time: {end-start:.2f} sec")
 
     # Wait an hour before running again
     time.sleep(60 * 60)

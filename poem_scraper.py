@@ -16,10 +16,12 @@ driver_path = "./chromedriver"
 url = "https://allpoetry.com"
 
 while True:
+    start = time.time()
+
     # Create a Chrome driver instance
     s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)
-    
+    driver = webdriver.Chrome(executable_path=driver_path)
+
     # Load the webpage
     driver.get(url)
 
@@ -57,7 +59,7 @@ while True:
     poems = soup.find_all("div", class_=lambda x: x and x.startswith("orig_"))
 
     # Create a new folder for today's results if it doesn't already exist
-    today = datetime.today().strftime('%Y-%m-%d')
+    today = datetime.today().strftime("%Y-%m-%d")
     if not os.path.exists(today):
         os.makedirs(today)
 
@@ -74,13 +76,19 @@ while True:
 
             # Remove leading tabs from lines after the first one
             text = poem.text.strip().replace("\t", "")
-            text = text.split('\n')
-            text = text[0] + '\n' + '\n'.join([line.lstrip() for line in text[1:]])
+            text = text.split("\n")
+            text = text[0] + "\n" + "\n".join([line.lstrip() for line in text[1:]])
 
-            file.write(text + "\n------------------------------------------------------------\n\n")
+            file.write(
+                text
+                + "\n------------------------------------------------------------\n\n"
+            )
 
     # Close the browser
     driver.quit()
+
+    end = time.time()
+    print(f"Time: {end-start:.2f} sec")
 
     # Wait an hour before running again
     time.sleep(60 * 60)

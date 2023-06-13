@@ -20,7 +20,7 @@ while True:
 
     # Create a Chrome driver instance
     s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)
+    driver = webdriver.Chrome(executable_path=driver_path)
 
     # Load the webpage
     driver.get(url)

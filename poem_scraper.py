@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 
 # Path to the Chrome driver executable
-driver_path = "/home/dev/chromedriver"
+driver_path = "./chromedriver"
 
 # URL of the webpage to scrape
 url = "https://allpoetry.com"
@@ -18,7 +18,7 @@ url = "https://allpoetry.com"
 while True:
     # Create a Chrome driver instance
     s = Service(driver_path)
-    driver = webdriver.Chrome(service=s)
+    driver = webdriver.Chrome(executable_path=driver_path)
 
     # Load the webpage
     driver.get(url)

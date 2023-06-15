@@ -43,4 +43,4 @@ python poem_scraper_async.py
 ```
 This version tends to be a little faster than the asynchronous one.
 More information in [Caqui page](https://pypi.org/project/caqui/#description)
->>>>>>> Add async version
+

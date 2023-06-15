@@ -27,7 +27,6 @@ python poem_scraper.py
 
 The script will launch Google Chrome and start scraping the poems displayed on https://allpoetry.com periodically, then write them to dated folders.
 
-
 ## Async version
 Run the WebDriver as a service using the downloaded chromedriver file
 ```
